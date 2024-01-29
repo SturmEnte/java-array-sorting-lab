@@ -15,13 +15,7 @@ public class StartUp {
 
         // Anzeigen des Arrays im Visualizer
         visualizer.drawIntArray(sampleArray);
-        
-        //Beispiel für ein Delay
-        delay(100);
-        
-        // Beispiel für eine Hervorhebung
-        // visualizer.highlightIndex(0);
-        // visualizer.highlightIndex(1);
+   
 
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
         // bubbleSort(sampleArray, visualizer);
