@@ -1,12 +1,12 @@
 import java.util.Random;
 
-public class Main {
+public class StartUp {
 
 	public static void main(String[] args) {
         ArrayVisualizer visualizer = new ArrayVisualizer();
         visualizer.setVisible(true);
 
-        // Erstellen eines Arrays mit 100 zufÃ¤lligen Werten zwischen 1 und 100
+        // Erstellen eines Arrays mit 100 zufälligen Werten zwischen 1 und 100
         int[] sampleArray = new int[100];
         Random random = new Random();
         for (int i = 0; i < sampleArray.length; i++) {
@@ -16,17 +16,17 @@ public class Main {
         // Anzeigen des Arrays im Visualizer
         visualizer.drawIntArray(sampleArray);
         
-        //Beispiel fÃ¼r ein Delay
+        //Beispiel für ein Delay
         delay(100);
         
-        //Beispiel fÃ¼r eine Hervorhebung
-//        visualizer.highlightIndex(0);
-//        visualizer.highlightIndex(1);
+        // Beispiel für eine Hervorhebung
+        // visualizer.highlightIndex(0);
+        // visualizer.highlightIndex(1);
 
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
         // bubbleSort(sampleArray, visualizer);
-        selectionSort(sampleArray, visualizer);
-        // insertionSort(sampleArray, visualizer);
+        // selectionSort(sampleArray, visualizer);
+        insertionSort(sampleArray, visualizer);
         // mergeSort(sampleArray, visualizer);
         // quickSort(sampleArray, visualizer);
     }
@@ -81,7 +81,27 @@ public class Main {
     }
 
     public static void insertionSort(int[] array, ArrayVisualizer visualizer) {
-        // Implementierung des Insertion-Sort-Algorithmus
+        
+    	for(int i = 1; i < array.length; i++) {
+    		int sortValue = array[i];
+    		int j = i;
+    		
+    		while (j > 0 && array[j - 1] > sortValue) {
+    			array[j] = array[j - 1];
+    			j = j - 1;
+    			
+    			visualizer.highlightIndex(i);
+    			visualizer.highlightIndex(j);
+    			visualizer.drawIntArray(array);
+    			delay(10);
+    		}
+    		
+    		array[j] = sortValue;
+    		
+    	}
+    	
+    	visualizer.drawIntArray(array);
+    	
     }
 
     public static void mergeSort(int[] array, ArrayVisualizer visualizer) {
@@ -92,7 +112,7 @@ public class Main {
         // Implementierung des Quick-Sort-Algorithmus
     }
 
-    // Weitere Sortieralgorithmen kÃ¶nnen hier hinzugefÃ¼gt werden
+    // Weitere Sortieralgorithmen können hier hinzugefügt werden
     
     private static void delay(int time) {
         try {
