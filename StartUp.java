@@ -15,7 +15,6 @@ public class StartUp {
 
         // Anzeigen des Arrays im Visualizer
         visualizer.drawIntArray(sampleArray);
-   
 
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
         // bubbleSort(sampleArray, visualizer);
@@ -108,6 +107,7 @@ public class StartUp {
 
     // Weitere Sortieralgorithmen können hier hinzugefügt werden
     
+    // Utilities
     private static void delay(int time) {
         try {
             Thread.sleep(time);
