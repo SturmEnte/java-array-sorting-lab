@@ -15,17 +15,17 @@ public class StartUp {
         }
 
         // Anzeigen des Arrays im Visualizer
-        visualizer.drawIntArray(sampleArray);
-        delay(1000);
+        /*visualizer.drawIntArray(sampleArray);
+        delay(1000);*/
         
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
         // bubbleSort(sampleArray, visualizer);
-        // selectionSort(sampleArray, visualizer);
+        selectionSort(sampleArray, visualizer);
         // insertionSort(sampleArray, visualizer);
-        int[] array = mergeSort(sampleArray, visualizer);
+        //int[] array = mergeSort(sampleArray, visualizer);
         // quickSort(sampleArray, visualizer);
         
-        visualizer.drawIntArray(array);
+        //visualizer.drawIntArray(array);
     }
 
     public static void bubbleSort(int[] array, ArrayVisualizer visualizer) {
@@ -63,13 +63,13 @@ public class StartUp {
     		visualizer.highlightIndex(minPosition);
     		visualizer.highlightIndex(insertIndex);
     		visualizer.drawIntArray(array);
-    		delay(10);
+    		delay(20);
     		
     		array = swap(array, minPosition, insertIndex);
     		insertIndex++;
     		
     		visualizer.drawIntArray(array);
-    		delay(10);
+    		delay(20);
     		
     	} while(insertIndex < highestIndex);
     	
