@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class StartUp {
@@ -15,13 +16,16 @@ public class StartUp {
 
         // Anzeigen des Arrays im Visualizer
         visualizer.drawIntArray(sampleArray);
-
+        delay(1000);
+        
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
         // bubbleSort(sampleArray, visualizer);
         // selectionSort(sampleArray, visualizer);
-        insertionSort(sampleArray, visualizer);
-        // mergeSort(sampleArray, visualizer);
+        // insertionSort(sampleArray, visualizer);
+        int[] array = mergeSort(sampleArray, visualizer);
         // quickSort(sampleArray, visualizer);
+        
+        visualizer.drawIntArray(array);
     }
 
     public static void bubbleSort(int[] array, ArrayVisualizer visualizer) {
@@ -97,8 +101,49 @@ public class StartUp {
     	
     }
 
-    public static void mergeSort(int[] array, ArrayVisualizer visualizer) {
-        // Implementierung des Merge-Sort-Algorithmus
+    public static int[] mergeSort(int[] array, ArrayVisualizer visualizer) {
+        if(array.length <= 1) return array;
+        
+        int[] leftArray = Arrays.copyOfRange(array, 0, array.length / 2);
+        int[] rightArray = Arrays.copyOfRange(array, array.length / 2, array.length);
+        
+        leftArray = mergeSort(leftArray, visualizer);
+        rightArray = mergeSort(rightArray, visualizer);
+       
+        return merge(leftArray, rightArray);
+    }
+    
+    private static int[] merge(int[] leftArray, int[] rightArray) {
+    	int[] newArray = new int[leftArray.length + rightArray.length];
+    	
+    	int newIndex = 0;
+    	int leftIndex = 0;
+    	int rightIndex = 0;
+    	
+    	while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+    		if(leftArray[leftIndex] <= rightArray[rightIndex]) {
+    			newArray[newIndex] = leftArray[leftIndex];
+    			leftIndex++;
+    		} else {
+    			newArray[newIndex] = rightArray[rightIndex];
+    			rightIndex++;
+    		}
+    		newIndex++;
+    	}
+    	
+    	while(leftIndex < leftArray.length) {
+    		newArray[newIndex] = leftArray[leftIndex];
+    		leftIndex++;
+    		newIndex++;
+    	}
+    	
+    	while(rightIndex < rightArray.length) {
+    		newArray[newIndex] = rightArray[rightIndex];
+    		rightIndex++;
+    		newIndex++;
+    	}
+    	
+    	return newArray;
     }
 
     public static void quickSort(int[] array, ArrayVisualizer visualizer) {
