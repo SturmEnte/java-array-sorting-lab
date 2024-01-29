@@ -34,9 +34,9 @@ public class StartUp {
     public static void bubbleSort(int[] array, ArrayVisualizer visualizer) {
     	int n = array.length;
 		boolean swapped = false;
-    	do { // äußere Schleife
+    	do {
 			swapped = false;
-		    for (int i = 0; i < n - 1; i = i + 1) { // innere Schleife
+		    for (int i = 0; i < n - 1; i = i + 1) {
 		      visualizer.highlightIndex(i);
 		      visualizer.highlightIndex(i + 1);
 		      visualizer.drawIntArray(array);
