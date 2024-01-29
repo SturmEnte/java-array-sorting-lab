@@ -1,8 +1,8 @@
 import java.util.Random;
 
-public class StartUp {
+public class Main {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         ArrayVisualizer visualizer = new ArrayVisualizer();
         visualizer.setVisible(true);
 
@@ -20,23 +20,64 @@ public class StartUp {
         delay(100);
         
         //Beispiel für eine Hervorhebung
-        visualizer.highlightIndex(0);
-        visualizer.highlightIndex(1);
+//        visualizer.highlightIndex(0);
+//        visualizer.highlightIndex(1);
 
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
-        bubbleSort(sampleArray, visualizer);
-        // selectionSort(sampleArray, visualizer);
+        // bubbleSort(sampleArray, visualizer);
+        selectionSort(sampleArray, visualizer);
         // insertionSort(sampleArray, visualizer);
         // mergeSort(sampleArray, visualizer);
         // quickSort(sampleArray, visualizer);
     }
 
     public static void bubbleSort(int[] array, ArrayVisualizer visualizer) {
-    	// Implementierung des Bubble-Sort-Algorithmus
+    	int n = array.length;
+		boolean swapped = false;
+    	do { // äußere Schleife
+			swapped = false;
+		    for (int i = 0; i < n - 1; i = i + 1) { // innere Schleife
+		      visualizer.highlightIndex(i);
+		      visualizer.highlightIndex(i + 1);
+		      visualizer.drawIntArray(array);
+		      delay(1);
+		      if (array[i] > array[i + 1]) {
+		        array = swap(array, i, i + 1);
+		        swapped = true;
+		      }
+		    }
+		    n = n - 1;
+		} while (swapped);
+    	visualizer.drawIntArray(array);
     }
 
     public static void selectionSort(int[] array, ArrayVisualizer visualizer) {
-        // Implementierung des Selection-Sort-Algorithmus
+    	int highestIndex = array.length - 1;
+    	int insertIndex = 0;
+    	do {
+    		int minPosition = insertIndex;
+    		
+    		for(int i = insertIndex + 1; i <= highestIndex; i++) {
+    			if(array[i] < array[minPosition]) {
+    				minPosition = i;
+    			}
+    		}
+    		
+    		visualizer.highlightIndex(minPosition);
+    		visualizer.highlightIndex(insertIndex);
+    		visualizer.drawIntArray(array);
+    		delay(10);
+    		
+    		array = swap(array, minPosition, insertIndex);
+    		insertIndex++;
+    		
+    		visualizer.drawIntArray(array);
+    		delay(10);
+    		
+    	} while(insertIndex < highestIndex);
+    	
+    	visualizer.drawIntArray(array);
+    	
     }
 
     public static void insertionSort(int[] array, ArrayVisualizer visualizer) {
@@ -61,7 +102,12 @@ public class StartUp {
             System.out.println("Thread wurde unterbrochen");
         }
     }
-
-
+    
+    private static int[] swap(int[] array, int a, int b) {
+    	int buffer = array[a];
+    	array[a] = array[b];
+    	array[b] = buffer;
+    	return array;
+    }
 
 }
