@@ -19,9 +19,11 @@ public class StartUp {
         delay(1000);*/
         
         // Beispielaufrufe der Sortiermethoden (auskommentiert)
-        // bubbleSort(sampleArray, visualizer);
-        selectionSort(sampleArray, visualizer);
-        // insertionSort(sampleArray, visualizer);
+        bubbleSort(sampleArray.clone(), visualizer);
+        delay(1000);
+        selectionSort(sampleArray.clone(), visualizer);
+        delay(1000);
+        insertionSort(sampleArray.clone(), visualizer);
         //int[] array = mergeSort(sampleArray, visualizer);
         // quickSort(sampleArray, visualizer);
         
